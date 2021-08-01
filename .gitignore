@@ -1,0 +1,5 @@
+*.out
+*.o
+.vscode
+ft_printf_tester
+printfTester
