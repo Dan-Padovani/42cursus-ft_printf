@@ -6,7 +6,7 @@
 /*   By: dpadovan <dpadovan@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/15 18:54:34 by dpadovan          #+#    #+#             */
-/*   Updated: 2021/07/31 23:52:39 by dpadovan         ###   ########.fr       */
+/*   Updated: 2021/08/07 00:50:13 by dpadovan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,20 +41,18 @@ int	ft_check_format(char str, va_list name)
 int	ft_printf(const char *format, ...)
 {
 	size_t	len;
-	size_t	len_arg;
 	size_t	i;
 	va_list	args;
 
 	va_start(args, format);
 	len = 0;
-	len_arg = 0;
 	i = 0;
 	while (format[i])
 	{
 		if (format[i] == '%')
 		{
 			i++;
-			len_arg = len_arg + ft_check_format(format[i], args);
+			len = len + ft_check_format(format[i], args);
 		}
 		else
 		{
@@ -64,5 +62,5 @@ int	ft_printf(const char *format, ...)
 		i++;
 	}
 	va_end(args);
-	return (len + len_arg);
+	return (len);
 }
